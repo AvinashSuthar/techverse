@@ -22,11 +22,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
+import { redirect } from "next/navigation";
 
 export function Navbartop({ session }: { session: any }) {
-  console.log(session);
-
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <div className="relative w-full">
@@ -38,15 +36,10 @@ export function Navbartop({ session }: { session: any }) {
           <div className="flex items-center gap-4">
             {session?.user ? (
               <>
-                <div className="relative hidden md:block">
-                  <Input
-                    type="text"
-                    placeholder="Search blogs..."
-                    className="pl-10 pr-4 py-1 w-64 rounded-full bg-gray-100 border-0 focus-visible:ring-1"
-                  />
-                  <SearchIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4 cursor-pointer" />
-                </div>
-                <NavbarButton variant="secondary">
+                <NavbarButton
+                  variant="secondary"
+                  onClick={() => redirect("/blog/create")}
+                >
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
