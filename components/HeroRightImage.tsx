@@ -1,8 +1,8 @@
 import Image from "next/image";
 import GradientBadge from "./ui/GradientBadge";
-import AnimationController from "./AnimationController";
-import ProximityAnimator from "./ProximityAnimator";
-import MagneticAttraction from "./MagneticAttraction";
+import AnimationController from "./animations/AnimationController";
+import ProximityAnimator from "./animations/ProximityAnimator";
+import MagneticAttraction from "./animations/MagneticAttraction";
 
 export default function HeroRightImage() {
   return (
@@ -22,31 +22,31 @@ export default function HeroRightImage() {
         classname="top-[50%] magnetic-button  right-[80%]"
         startColor="blue"
         endColor="green"
-        text="demo"
+        text="Next.js"
       />
       <GradientBadge
         classname="top-[20%] magnetic-button   right-[70%]"
         startColor="blue"
         endColor="purple"
-        text="blogs"
+        text="React"
       />
       <GradientBadge
         classname="top-[10%] magnetic-button  right-[50%]"
         startColor="purple"
         endColor="green"
-        text="blogs"
+        text="health"
       />
       <GradientBadge
-        classname="top-[10%] magnetic-button right-[30%] "
+        classname="top-[10%] magnetic-button right-[20%] "
         startColor="blue"
         endColor="red"
-        text="blogs"
+        text="programming"
       />
       <GradientBadge
         classname="top-[50%] magnetic-button  right-[20%]"
         startColor="red"
         endColor="green"
-        text="blogs"
+        text="technology"
       />
     </div>
   );

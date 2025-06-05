@@ -6,8 +6,8 @@ const signUp = async (formData: FormData) => {
   return executeAction({
     actionFn: async () => {
       const email = formData.get("email");
-          const password = formData.get("password");
-          console.log(email, password);
+      const password = formData.get("password");
+      console.log(email, password);
       const validatedData = signInSchema.parse({ email, password });
       await prisma.user.create({
         data: {

@@ -4,6 +4,8 @@ import FeaturedBlogs from "./FeaturedBlogs";
 import LatestBlogs from "./LatestBlogs";
 import SearchBlogs from "./SearchBlogs";
 import { Button } from "./ui/button";
+import { Suspense } from "react";
+import BlogCardSkeleton from "./skeleton/BlogCardSkeleton";
 
 export default function () {
   return (
@@ -21,7 +23,9 @@ export default function () {
       <div className="flex flex-col justify-center  sm:flex-row  mt-10 h-full">
         {/* BlogCards */}
         <div className=" w-full ">
-          <BlogCards />
+          <Suspense fallback={<BlogCardSkeleton />}>
+            <BlogCards />
+          </Suspense>
           <Button
             variant={"outline"}
             className="fade-in-up mt-10 hover:scale-110 transition-all duration-500 active:scale-90 "

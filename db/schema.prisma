@@ -27,21 +27,21 @@ model User {
 }
 
 model Blog {
-    id   String   @id @default(cuid())
-    tags String[]
-
+    id            String   @id @default(cuid())
+    tags          String[]
+    category      String   @default("Uncategorized")
+    slug          String   @unique
     title         String
-    likes         Int     @default(0)
-    dislikes      Int     @default(0)
-    views         Int     @default(0)
-    comments      Int     @default(0)
-    rating        Float   @default(0.0)
-    ratingCount   Int     @default(0)
+    img           String
+    likes         Int      @default(0)
+    dislikes      Int      @default(0)
+    views         Int      @default(0)
+    comments      Int      @default(0)
     estimatedTime Int
     content       String
-    published     Boolean @default(false)
+    published     Boolean  @default(false)
     authorId      String
-    author        User    @relation(fields: [authorId], references: [id], onDelete: Cascade)
+    author        User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

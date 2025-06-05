@@ -1,44 +1,40 @@
 import { FocusCards } from "@/components/ui/focus-cards";
+import { prisma } from "@/lib/prisma";
 
-export function BlogCards() {
-  const cards = [
-    {
-      title: "Forest Adventure lorem ipsum dolor sit amet consectetur adipiscing elit saf asdf adsfa f df dfd f ",
-      src: "https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      cardId: "1",
-      desc: "Explore the serene beauty of the forest with this breathtaking view. The lush greenery and tranquil atmosphere make it a perfect escape from the hustle and bustle of city life.",
+export async function BlogCards() {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  const blogs = await prisma.blog.findMany({
+    orderBy: { createdAt: "desc" },
+    include: {
+      author: {
+        select: {
+          firstname: true,
+          image: true,
+          email: true,
+          lastname: true,
+          id: true,
+        },
+      },
     },
-    {
-      title: "Valley of life",
-      src: "https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      cardId: "2",
-      desc: "Explore the serene beauty of the forest with this breathtaking view. The lush greenery and tranquil atmosphere make it a perfect escape from the hustle and bustle of city life.",
+  });
+
+  const cards = blogs.map((blog) => ({
+    title: blog.title,
+    desc: blog.content,
+    cardId: blog.id,
+    src: blog.img,
+    category: blog.category,
+    slug: blog.slug,
+    views: blog.views,
+    likes: blog.likes,
+    dislikes: blog.dislikes,
+    createdAt: blog.createdAt.toISOString(),
+    user: {
+      name: blog.author.firstname + " " + blog.author.lastname,
+      image: blog.author.image || "",
+      id: blog.author.id,
     },
-    {
-      title: "Sala behta hi jayega",
-      src: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      cardId: "3",
-      desc: "Explore the serene beauty of the forest with this breathtaking view. The lush greenery and tranquil atmosphere make it a perfect escape from the hustle and bustle of city life.",
-    },
-    {
-      title: "Camping is for pros",
-      src: "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      cardId: "4",
-      desc: "Explore the serene beauty of the forest with this breathtaking view. The lush greenery and tranquil atmosphere make it a perfect escape from the hustle and bustle of city life.",
-    },
-    {
-      title: "The road not taken",
-      src: "https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      cardId: "5",
-      desc: "Explore the serene beauty of the forest with this breathtaking view. The lush greenery and tranquil atmosphere make it a perfect escape from the hustle and bustle of city life.",
-    },
-    {
-      title: "The First Rule",
-      src: "https://assets.aceternity.com/the-first-rule.png",
-      cardId: "6",
-      desc: "Explore the serene beauty of the forest with this breathtaking view. The lush greenery and tranquil atmosphere make it a perfect escape from the hustle and bustle of city life.",
-    },
-  ];
+  }));
 
   return <FocusCards cards={cards} />;
 }

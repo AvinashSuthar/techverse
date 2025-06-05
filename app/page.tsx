@@ -1,4 +1,4 @@
-import AnimationController from "@/components/AnimationController";
+import AnimationController from "@/components/animations/AnimationController";
 import DiscoverBlogs from "@/components/DiscoverBlogs";
 import Hero from "@/components/Hero";
 import { auth } from "@/lib/auth";

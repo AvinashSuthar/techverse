@@ -1,4 +1,4 @@
-import AnimationController from "./AnimationController";
+import AnimationController from "./animations/AnimationController";
 import HeroRightImage from "./HeroRightImage";
 import { Button } from "./ui/button";
 
@@ -50,7 +50,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative w-full sm:w-[50%] h-[90%] p-10 flex items-center justify-center">
+      <div className="relative w-full sm:w-[50%] h-[90%] p-10  items-center justify-center md:block hidden">
         <div className="absolute w-[600px] top-0 right-0 h-[500px] bg-blue-800 rounded-full blur-[190px] opacity-100 z-0"></div>
         <HeroRightImage />
       </div>
