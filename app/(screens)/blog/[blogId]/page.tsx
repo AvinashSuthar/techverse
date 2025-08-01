@@ -5,7 +5,7 @@ type BlogPageProps = {
     blogId: string;
   };
 };
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage({ params }: any) {
   const { blogId } = await params;
   const blog = await prisma.blog.findUnique({
     where: {
