@@ -21,6 +21,8 @@ const executeAction = async <T>({
       throw error;
     }
 
+      console.log("Redirecting...", error);
+
     return {
       success: false,
       message: "An error has occurred during executing the action",

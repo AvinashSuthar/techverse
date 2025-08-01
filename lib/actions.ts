@@ -15,6 +15,8 @@ const signUp = async (formData: FormData) => {
           password: validatedData.password,
         },
       });
+      console.log("User created successfully");
+      return { success: true };
     },
     successMessage: "Signed up successfully",
   });

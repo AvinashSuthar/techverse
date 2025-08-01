@@ -25,8 +25,9 @@ export default async function SignupForm() {
         action={async (formData) => {
           "use server";
           const res = await signUp(formData);
+          console.log(res);
           if (res.success) {
-            redirect("/login");
+            redirect("/");
           }
         }}
       >
