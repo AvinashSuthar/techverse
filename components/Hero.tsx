@@ -19,32 +19,32 @@ export default function Hero() {
           </p>
         </div>
         <div className="  flex gap-10 flex-col sm:flex-row ">
-          <Button className="fade-in-up bg-blue-400 rounded hover:bg-black border border-blue-400 text-white transition-all duration-200 font-semibold px-10 py-6 cursor-pointer">
+          <Button className="fade-in-up bg-blue-400 rounded hover:bg-black border border-blue-400  transition-all duration-200 font-semibold px-10 py-6 cursor-pointer">
             Start Writing Now
           </Button>
           <Button
             variant="secondary"
-            className="fade-in-up transition-all duration-200 font-semibold px-10 py-6 rounded border border-blue-400 bg-black hover:bg-blue-400 cursor-pointer
+            className="fade-in-up transition-all duration-200 font-semibold px-10 py-6 rounded border border-blue-400  hover:bg-blue-400 cursor-pointer
              "
           >
             Become a Member
           </Button>
         </div>
 
-        <div className="flex flex-col mt-6 text-white">
+        <div className="flex flex-col mt-6">
           <ul className="flex gap-10 text-3xl">
             <li className="fade-in-up">
               <span className="font-semibold">10k+</span>
               <br />
-              <span className="text-base text-gray-300">Community Members</span>
+              <span className="text-base">Community Members</span>
             </li>
             <li className="fade-in-up">
               <span className="font-semibold">20k+</span> <br />
-              <span className="text-base text-gray-300">Articles Written</span>
+              <span className="text-base">Articles Written</span>
             </li>
             <li className="fade-in-up">
               <span className="font-semibold">1M+</span> <br />{" "}
-              <span className="text-base text-gray-300">Views </span>
+              <span className="text-base">Views </span>
             </li>
           </ul>
         </div>

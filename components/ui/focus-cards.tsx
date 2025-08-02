@@ -15,12 +15,12 @@ export const Card = React.memo(
     desc,
     slug
   }: {
-    card: Blog;
-    cardId: string;
+    card?: Blog;
+    cardId?: string;
     index: number;
-    hovered: number | null;
-    desc: string;
-    slug: string;
+    hovered?: number | null;
+    desc?: string;
+    slug?: string;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
   }) => (
     <Link href={`/blog/${slug}`}>
@@ -33,12 +33,12 @@ export const Card = React.memo(
           hovered === index && "cursor-pointer"
         )}
       >
-        <img
+        {/* <img
           loading="lazy"
           src={card.src}
           alt={card.title}
           className="object-cover absolute inset-0 w-full h-full"
-        />
+        /> */}
 
         {/* Dark overlay */}
         <div
@@ -59,14 +59,14 @@ export const Card = React.memo(
                 : "opacity-0 translate-y-4"
             )}
           >
-            {card.desc.slice(0, 100)}...
+            {/* {card.desc.slice(0, 100)}... */}
           </p>
 
           {/* Title always visible at bottom */}
           <div className="block text-justify text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
-            {card.title.length > 30
+            {/* {card.title.length > 30
               ? card.title.slice(0, 30) + "..."
-              : card.title}
+              : card.title} */}
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export const Card = React.memo(
             variant={"outline"}
             className="rounded-full px-3 py-2 border border-white/50 bg-black/30"
           >
-            {card.category}
+            {/* {card.category} */}
           </Badge>
         </div>
       </div>
@@ -104,21 +104,21 @@ export type Blog = {
   };
 };
 
-export function FocusCards({ cards }: { cards: Blog[] }) {
+export function FocusCards({ cards }: { cards: string[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-3 gap-20  mx-auto md:px-8 w-[90%]  p-3">
       {cards.map((card, index) => (
         <Card
-          slug={card.slug}
-          cardId={card.cardId}
-          key={card.title}
-          card={card}
+          slug={card}
+          cardId={index.toString()}
+          key={card}
+          // card={card}
           index={index}
           hovered={hovered}
           setHovered={setHovered}
-          desc={card.desc}
+          // desc={card.desc}
         />
       ))}
     </div>

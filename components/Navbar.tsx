@@ -2,7 +2,6 @@
 import {
   Navbar,
   NavBody,
-  NavItems,
   MobileNav,
   NavbarLogo,
   NavbarButton,
@@ -14,8 +13,7 @@ import { useState } from "react";
 import { ModeToggle } from "./theme-select";
 import { signOut } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Input } from "./ui/input";
-import { LogOut, Pencil, SearchIcon } from "lucide-react";
+import { LogOut, Pencil } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -66,7 +64,7 @@ export function Navbartop({ session }: { session: any }) {
                 </NavbarButton>
                 <Avatar>
                   <AvatarImage src={session.user.image} />
-                  <AvatarFallback>CN</AvatarFallback>
+                  <AvatarFallback className=" font-bold cursor-pointer">{session.user.email.toUpperCase().charAt(0)}</AvatarFallback>
                 </Avatar>
               </>
             ) : (
@@ -85,7 +83,7 @@ export function Navbartop({ session }: { session: any }) {
               {session?.user && (
                 <Avatar>
                   <AvatarImage src={session.user.image} />
-                  <AvatarFallback>CN</AvatarFallback>
+                  <AvatarFallback className=" font-bold cursor-pointer">{session.user.email.toUpperCase().charAt(0)}</AvatarFallback>
                 </Avatar>
               )}
 
