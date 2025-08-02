@@ -11,7 +11,7 @@ export async function generateStaticParams() {
     return slugs.map((slug) => ({ slug }));
 }
 
-export default async function BlogPage({ params }: { params: { slug: string } }) {
+export default async function BlogPage({ params }: any ) {
     const { content, frontmatter } = await getPostBySlug(params.slug);
 
     const typedFrontmatter = frontmatter as Frontmatter;
